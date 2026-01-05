@@ -1,0 +1,199 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="2">
+        <tr>
+            
+            <th>Name</th>
+            <th>Hostel_type</th>
+            <th>EDIT</th>
+            <th>DELETE</th>
+        </tr>
+        {% for x in data %}
+        <tr>
+            <td>{{x.name}}</td>
+            <td>{{x.hostel_type}}</td>
+            <td>
+                <a href="{% url 'hst_update' x.id %}">edit</a>
+            </td>
+            <td>
+                <a href="{% url 'hst_delete' x.id %}">del</a>
+            </td>
+
+        </tr>
+        {% endfor %}
+        
+    </table>
+    <a href="{% url 'hostel_form' %}">NEW</a>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hostel Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: url('https://wallpaperaccess.com/full/8616608.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            padding: 30px;
+        }
+
+        .navbar-custom {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .table-wrapper {
+            background-color: rgba(50, 50, 100, 0.4); /* bluish transparent */
+            backdrop-filter: blur(12px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        table th, table td {
+            text-align: center;
+            vertical-align: middle;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 12px;
+        }
+
+        table th {
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            color: white;
+            font-weight: bold;
+        }
+
+        table tbody tr td {
+            background: linear-gradient(135deg, #1d2671, #c33764);
+            color: white;
+            transition: 0.3s;
+        }
+
+        table tbody tr:nth-child(even) td {
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            color: black;
+        }
+
+        table tbody tr:hover td {
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            color: black;
+            transform: scale(1.02);
+        }
+
+        a.btn-edit {
+            background-color: #00c6ff;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        a.btn-edit:hover {
+            background-color: #0077b6;
+        }
+
+        a.btn-delete {
+            background-color: #ff4d4d;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        a.btn-delete:hover {
+            background-color: #cc0000;
+        }
+
+        a.btn-new {
+            background-color: #38ef7d;
+            color: black;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        a.btn-new:hover {
+            background-color: #0f9d58;
+            color: white;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'dashboard' %}">Hostel Management</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="{% url 'hostel' %}">Hostel</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'room' %}">Room</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'std' %}">Students</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'complaint' %}">Complaints</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'visitor' %}">Visitors</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'pay' %}">Payment</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Table -->
+<div class="container table-wrapper">
+    <h2 class="text-center mb-4">Hostel List</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Hostel Name</th>
+                    <th>Hostel Type</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in data %}
+                <tr>
+                    <td>{{ x.name }}</td>
+                    <td>{{ x.hostel_type }}</td>
+                    <td><a href="{% url 'hst_update' x.id %}" class="btn-edit">Edit</a></td>
+                    <td><a href="{% url 'hst_delete' x.id %}" class="btn-delete">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <a href="{% url 'hostel_form' %}" class="btn-new">+ New Hostel</a>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

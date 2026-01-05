@@ -1,0 +1,164 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+    <p>{{ message }}</p>
+    <h1>Registration</h1>
+
+    <form method="post" autocomplete="off">
+        {% csrf_token %}
+
+        <input type="text" placeholder="Enter your name" name="username" required>
+
+        <input type="email" placeholder="Enter your email" name="useremail" required>
+
+        <input type="password" placeholder="Enter your password" name="user_password" required>
+
+        <input type="password" placeholder="Confirm password" name="user_con_password" required>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>
+    
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            /* 🎨 Background using your reference style */
+            background: 
+                linear-gradient(
+                    135deg, 
+                    #3a7bd5 0%, 
+                    #00d2ff 100%
+                ),
+                url("https://png.pngtree.com/thumb_back/fh260/background/20220112/pngtree-glass-morphim-effect-registration-banner-with-gradient-blue-image_934693.jpg") center/cover no-repeat;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 35px 30px;
+
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 18px;
+
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+
+            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.35);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 22px;
+            font-weight: 700;
+            font-size: 28px;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+
+        p {
+            font-size: 14px;
+            margin-bottom: 12px;
+            color: #fffb;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 16px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 10px;
+
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            outline: none;
+        }
+
+        input::placeholder {
+            color: #555;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 8px;
+
+            border: none;
+            border-radius: 12px;
+
+            background: linear-gradient(135deg, #007CF0, #00DFD8);
+
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            cursor: pointer;
+
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0, 223, 216, 0.5);
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <p>{{ message }}</p>
+        <h1>Registration</h1>
+
+        <form method="post" autocomplete="off">
+            {% csrf_token %}
+
+            <input type="text" placeholder="Enter your name" name="username" required>
+            <input type="email" placeholder="Enter your email" name="useremail" required>
+            <input type="password" placeholder="Enter your password" name="user_password" required>
+            <input type="password" placeholder="Confirm password" name="user_con_password" required>
+
+            <button type="submit">Create Account</button>
+        </form>
+    </div>
+
+</body>
+</html>

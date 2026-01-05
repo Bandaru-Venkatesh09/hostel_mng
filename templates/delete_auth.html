@@ -1,0 +1,153 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Authentication</title>
+</head>
+<body>
+
+<h3>Confirm Delete</h3>
+
+{% if error %}
+<p style="color:red;">{{ error }}</p>
+{% endif %}
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Default username" required><br><br>
+    <input type="password" name="password" placeholder="Default password" required><br><br>
+    <button type="submit">Confirm Delete</button>
+</form>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Authentication</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* BACKGROUND */
+        body{
+            margin:0;
+            min-height:100vh;
+            background:
+                linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.75)),
+                url("https://images.unsplash.com/photo-1519681393784-d120267933ba");
+            background-size:cover;
+            background-position:center;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        /* CARD */
+        .auth-card{
+            width:100%;
+            max-width:420px;
+            background: rgba(17,24,39,.95);
+            padding:35px;
+            border-radius:18px;
+            box-shadow:0 30px 80px rgba(0,0,0,.8);
+            border:1px solid rgba(255,255,255,.08);
+            animation: slideUp .7s ease;
+            color:#f9fafb;
+        }
+
+        @keyframes slideUp{
+            from{transform:translateY(40px); opacity:0;}
+            to{transform:translateY(0); opacity:1;}
+        }
+
+        /* TITLE */
+        .auth-card h3{
+            text-align:center;
+            margin-bottom:20px;
+            font-weight:700;
+            color:#f87171;
+        }
+
+        /* INPUTS */
+        .form-control{
+            background:#020617;
+            border:1px solid rgba(255,255,255,.1);
+            color:#e5e7eb;
+            border-radius:10px;
+            padding:12px;
+        }
+
+        .form-control::placeholder{
+            color:#9ca3af;
+        }
+
+        .form-control:focus{
+            background:#020617;
+            color:#fff;
+            box-shadow:none;
+            border-color:#ef4444;
+        }
+
+        /* BUTTON */
+        .btn-danger{
+            width:100%;
+            padding:12px;
+            font-weight:600;
+            border-radius:12px;
+            background: linear-gradient(135deg, #ef4444, #b91c1c);
+            border:none;
+            transition:.3s;
+        }
+
+        .btn-danger:hover{
+            transform:scale(1.05);
+            box-shadow:0 10px 25px rgba(239,68,68,.6);
+        }
+
+        /* ERROR */
+        .error{
+            background:rgba(239,68,68,.15);
+            color:#fecaca;
+            padding:10px;
+            border-radius:10px;
+            text-align:center;
+            margin-bottom:15px;
+            border:1px solid rgba(239,68,68,.3);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="auth-card">
+    <h3>⚠ Confirm Delete</h3>
+
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <input type="text" name="username" class="form-control" placeholder="Default username" required>
+        </div>
+
+        <div class="mb-4">
+            <input type="password" name="password" class="form-control" placeholder="Default password" required>
+        </div>
+
+        <button type="submit" class="btn btn-danger">
+            Confirm Delete
+        </button>
+    </form>
+</div>
+
+</body>
+</html>
+

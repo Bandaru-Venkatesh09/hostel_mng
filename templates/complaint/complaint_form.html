@@ -1,0 +1,105 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>complaint_form</h1>
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+        <BUtton type="submit">SUBMIT</BUtton>
+
+    </form>
+    <a href="{% url 'complaint' %}">back</a>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Complaint Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+body{
+    margin:0;
+    min-height:100vh;
+    background:
+        linear-gradient(135deg, rgba(15,23,42,.9), rgba(30,41,59,.9)),
+        url("https://images.unsplash.com/photo-1519681393784-d120267933ba");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
+}
+
+
+.form-wrapper {
+    background-color: rgba(50, 50, 100, 0.4); /* darker bluish tint */
+    backdrop-filter: blur(12px);
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 600px;
+    margin: auto;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+input, textarea, select {
+    background-color: rgba(255, 255, 255, 0.2); /* light transparent input */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+button {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #ff4b2b;
+}
+</style>
+
+</head>
+<body>
+
+<div class="form-wrapper">
+    <h1>Complaint Form</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="text-center">
+            <button type="submit">SUBMIT</button>
+        </div>
+    </form>
+    <div class="text-center">
+        <a href="{% url 'complaint' %}">Back</a>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

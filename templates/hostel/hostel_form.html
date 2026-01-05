@@ -1,0 +1,133 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hostel_form</h1>
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+        <BUtton type="submit">SUBMIT</BUtton>
+
+    </form>
+    <a href="{% url 'hostel' %}">back</a>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hostel Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+       body{
+    margin:0;
+    min-height:100vh;
+    background:
+        linear-gradient(135deg, rgba(15,23,42,.9), rgba(30,41,59,.9)),
+        url("https://images.unsplash.com/photo-1519681393784-d120267933ba");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
+}
+
+
+        .form-wrapper {
+            background-color: rgba(50, 50, 100, 0.4); /* bluish transparent tint */
+            backdrop-filter: blur(12px);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 600px;
+            margin: auto;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            box-shadow: 0 0 10px #00c6ff;
+        }
+
+        button {
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px #ff4b2b;
+        }
+
+        a.back-link {
+            color: #00c6ff;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        a.back-link:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-wrapper">
+    <h1>Hostel Form</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">SUBMIT</button>
+    </form>
+    <div class="text-center">
+        <a href="{% url 'hostel' %}" class="back-link">Back</a>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

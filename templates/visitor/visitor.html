@@ -1,0 +1,194 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="2">
+        <tr>
+            <th>student</th>
+            <th>visitor_name</th>
+            <th>relation</th>
+            <th>entry_time</th>
+            <th>exit_time</th>
+            <th>approved</th>
+            <th>EDIT</th>
+            <th>DELETE</th>
+        </tr>
+        {% for x in data %}
+        <tr>
+            <td>{{x.student}}</td>
+            <td>{{x.visitor_name}}</td>
+            <td>{{x.relation}}</td>
+            <td>{{x.entry_time}}</td>
+            <td>{{x.exit_time}}</td> 
+            <td>{{x.approved}}</td>
+            <td>
+                <a href="{% url 'visit_update' x.id %}">edit</a>
+            </td>
+            <td>
+                <a href="{% url 'visit_delete' x.id %}">del</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'visitor_form' %}">NEW</a>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitors Dashboard</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            padding: 30px;
+        }
+
+        .table-wrapper {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        table th {
+            background: linear-gradient(90deg, #ff6a00, #ee0979);
+            color: white;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        table td {
+            text-align: center;
+            vertical-align: middle;
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        table tr:nth-child(even) td {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        table tr:hover td {
+            background-color: rgba(255, 208, 0, 0.5);
+            transform: scale(1.02);
+            transition: 0.3s;
+        }
+
+        a.btn-custom {
+            background-color: #ff6a00;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        a.btn-custom:hover {
+            background-color: #ee0979;
+            color: white;
+        }
+
+        a.new-btn {
+            display: inline-block;
+            margin-top: 15px;
+            background-color: #00bcd4;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        a.new-btn:hover {
+            background-color: #0097a7;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'dashboard' %}">Hostel Management</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'hostel' %}">Hostel</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'room' %}">Room</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'std' %}">Students</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'complaint' %}">Complaints</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{% url 'visitor' %}">Visitors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'pay' %}">Payment</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Table -->
+    <div class="container table-wrapper">
+        <h1 class="text-center mb-4">Visitors</h1>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Visitor Name</th>
+                    <th>Relation</th>
+                    <th>Entry Time</th>
+                    <th>Exit Time</th>
+                    <th>Approved</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in data %}
+                <tr>
+                    <td>{{ x.student }}</td>
+                    <td>{{ x.visitor_name }}</td>
+                    <td>{{ x.relation }}</td>
+                    <td>{{ x.entry_time }}</td>
+                    <td>{{ x.exit_time }}</td>
+                    <td>{{ x.approved }}</td>
+                    <td><a href="{% url 'visit_update' x.id %}" class="btn-custom">Edit</a></td>
+                    <td><a href="{% url 'visit_delete' x.id %}" class="btn-custom">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="text-center">
+            <a href="{% url 'visitor_form' %}" class="new-btn">Add New Visitor</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

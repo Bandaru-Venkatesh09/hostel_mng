@@ -1,0 +1,173 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>{{ message }}</p>
+    <h1>LOGIN</h1>
+    <form method="post">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <input type="text" placeholder="Enter your name" name="user_log_name">
+            </tr>
+            
+            <tr>
+                <input type="password" placeholder="Enter your password" name="user_log_password">
+            </tr>
+            
+        </table>
+        <button type="submit">submit</button>
+    </form>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login / Register</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    background:
+        linear-gradient(135deg, rgba(0,0,0,.75), rgba(59,130,246,.85)),
+        url("https://images.unsplash.com/photo-1518770660439-4636190af475");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
+}
+
+
+
+
+
+
+
+
+.card{
+    width:100%;
+    max-width:420px;
+    padding:35px 30px;
+    background:rgba(255,255,255,0.15);
+    border-radius:20px;
+    backdrop-filter:blur(15px);
+    box-shadow:0 30px 60px rgba(0,0,0,.4);
+}
+
+h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    margin-bottom:14px;
+    border:none;
+    border-radius:10px;
+    background:rgba(255,255,255,.9);
+    outline:none;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,#007CF0,#00DFD8);
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.toggle{
+    text-align:center;
+    margin-top:15px;
+    font-size:14px;
+}
+
+.toggle span{
+    color:#ffeb3b;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.form{
+    display:none;
+}
+
+.form.active{
+    display:block;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <p style="text-align:center">{{ message }}</p>
+
+    <!-- LOGIN -->
+    <form method="post" class="form active" id="loginForm">
+        {% csrf_token %}
+        <h2>Login</h2>
+        <input type="text" name="user_log_name" placeholder="Enter your name" required>
+        <input type="password" name="user_log_password" placeholder="Enter your password" required>
+        <button type="submit">Login</button>
+
+        <div class="toggle">
+            Don’t have an account?
+            <span onclick="showRegister()">Create account</span>
+        </div>
+    </form>
+
+    <!-- REGISTER -->
+    <form method="post" class="form" id="registerForm" autocomplete="off">
+        {% csrf_token %}
+        <h2>Register</h2>
+        <input type="text" name="username" placeholder="Enter your name" required>
+        <input type="email" name="useremail" placeholder="Enter your email" required>
+        <input type="password" name="user_password" placeholder="Enter your password" required>
+        <input type="password" name="user_con_password" placeholder="Confirm password" required>
+        <button type="submit">Create Account</button>
+
+        <div class="toggle">
+            Already have an account?
+            <span onclick="showLogin()">Back to login</span>
+        </div>
+    </form>
+
+</div>
+
+<script>
+function showRegister(){
+    document.getElementById('loginForm').classList.remove('active');
+    document.getElementById('registerForm').classList.add('active');
+}
+
+function showLogin(){
+    document.getElementById('registerForm').classList.remove('active');
+    document.getElementById('loginForm').classList.add('active');
+}
+</script>
+
+</body>
+</html>
